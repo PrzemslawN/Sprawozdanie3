@@ -24,11 +24,41 @@ void loop()
 
 2.Otwieramy konsolne oraz uruchamiamy system ROS (roscore)
 roscore / 1 termianal
+
 3.Otwieramy 2 konsole  w której nawiązujemy połączenie z modułem Arduino
 rosrun rosserial_arduino serial_node.py _port:=/dev/ttyACM0
+
 4.Otwieramy 3 konsole i sprawdzamy połączenie zmieniając stan diody
 rostopic pub toggle_led std_msgs/Empty --once
+
 5.W środowisku matlaba wykonujemy opis matematyczny położenia oraz wyrysowujemy orientacje bryły
 
+xlim([-20 20])
+ylim([-20 20])
+x = 1;
+y = 1;
+
+w1 = 1;
+w2 = 0.5;
+R= 0.25;
+L = 1;
+theta = 0;
+
+while true // pętla nieskończona
+
+//Połozenie i orientacja
+dx = (R*(w1+w2)*cos(theta))/2; 
+dy = (R*(w1+w2)*sin(theta))/2; 
+deteta =  (R*(w1-w2))/L;
+
+x = y+dx;
+y = y+dy;
+theta = theta+deteta; 
+
+drawnow
+grid on
+plot(x,y, ‘*’) //wyrysowanie na wykresie orientacji bryły
+
+end
 
 
