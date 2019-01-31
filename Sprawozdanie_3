@@ -42,18 +42,18 @@ w1 = 1;
 w2 = 0.5;
 R= 0.25;
 L = 1;
-theta = 0;
+θ = 0; //theta
 
 while true // pętla nieskończona
 
 //Połozenie i orientacja
-dx = (R*(w1+w2)*cos(theta))/2; 
-dy = (R*(w1+w2)*sin(theta))/2; 
-deteta =  (R*(w1-w2))/L;
+dx = (R*(w1+w2)*cos(θ))/2; 
+dy = (R*(w1+w2)*sin(θ))/2; 
+θ2 =  (R*(w1-w2))/L;
 
 x = y+dx;
 y = y+dy;
-theta = theta+deteta; 
+θ = θ+θ2; 
 
 drawnow
 grid on
